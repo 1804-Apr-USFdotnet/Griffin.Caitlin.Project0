@@ -8,7 +8,7 @@ namespace Resturant_Library
 {
     public class Resturant
     {
-        public List <ResturantReviews> ListofReviews { get; set; } //Everything involving a resturant
+        public List <ResturantReviews> ListofReviews { get; set; } //Everything involving resturant reviews
         public string ZipCode { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
@@ -26,11 +26,35 @@ namespace Resturant_Library
         {
             ListofReviews.Add(MyRview);
         }
+
+        
     }
     public class ResturantReviews // Reviews left by a customer
     {
-        public int StarReviews { get; set; }
-        public string WrittenReviews { get; set; }
+        public int StarReviews
+        {
+            get
+            {
+                return StarReviews;
+            }
+            set
+            {
+                if (value < 0 || value > 5)  //Made its max count for star reviews to 5
+                {
+                    if (value < 0)
+                    {
+                        StarReviews = 0;
+                    }
+                    else if (value > 5)
+                    {
+                        StarReviews = 5;
+                    }
+                }
+                else StarReviews = value;
+            }   
+        }
+    
+        public string WrittenReviews { get; set;}
     
     }
     public class ResturantReviewer // The customer itself leaving the review
