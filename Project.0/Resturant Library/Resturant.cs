@@ -8,7 +8,7 @@ namespace Resturant_Library
 {
     public class Resturant
     {
-        List <ResturantReviews> ListofReviews { get; set; } //Everything involving a resturant
+        public List <ResturantReviews> ListofReviews { get; set; } //Everything involving a resturant
         public string ZipCode { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
@@ -16,6 +16,16 @@ namespace Resturant_Library
         public string Street { get; set; }
         public int StreetNum { get; set; }
         public int ResturantID { get; set; }
+
+
+        public Resturant() //constructor
+        {
+            ListofReviews = new List<ResturantReviews>();
+        }
+        public void NewReview(ResturantReviews MyRview) //Method
+        {
+            ListofReviews.Add(MyRview);
+        }
     }
     public class ResturantReviews // Reviews left by a customer
     {
