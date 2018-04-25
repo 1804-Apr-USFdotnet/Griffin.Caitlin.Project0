@@ -8,7 +8,7 @@ namespace Resturant_Library
 {
     public class Resturant
     {
-        public List <ResturantReviews> ListofReviews { get; set; } //Everything involving resturant reviews
+        public List<ResturantReviews> ListofReviews { get; set; } //Everything involving resturant reviews
         public string ZipCode { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
@@ -27,7 +27,7 @@ namespace Resturant_Library
             ListofReviews.Add(MyRview);
         }
 
-        
+
     }
     public class ResturantReviews // Reviews left by a customer
     {
@@ -51,16 +51,29 @@ namespace Resturant_Library
                     }
                 }
                 else StarReviews = value;
-            }   
+            }
         }
-    
-        public string WrittenReviews { get; set;}
-    
+
+        public string WrittenReviews { get; set; }
+
     }
     public class ResturantReviewer // The customer itself leaving the review
     {
         public string Name { get; set; }
         public int CustomerID { get; set; }
+        public string Comment { get; set; }
     }
 
+
+    //public static class Serealizer(); im trying to make a serealizer
+    
+       
 }
+
+
+
+    
+              
+           
+
+
