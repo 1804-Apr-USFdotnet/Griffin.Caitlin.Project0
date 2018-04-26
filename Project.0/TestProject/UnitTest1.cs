@@ -13,11 +13,12 @@ namespace TestProject
         public void TestMethod1()
         {
             Resturant NewResturant = new Resturant();           // Arrange
-            ResturantReviews NewReview = new ResturantReviews();
+            //ResturantReviews NewReview = new ResturantReviews();
+            var t = NewResturant.loadJSON();
 
-            NewResturant.NewReview(NewReview); //Act
+            //NewResturant.NewReview(NewReview); //Act
 
-            Assert.AreEqual(1, NewResturant.ListofReviews.Count);  //Assert
+            //Assert.AreEqual(1, NewResturant.ListofReviews.Count);  //Assert
 
         }
     }

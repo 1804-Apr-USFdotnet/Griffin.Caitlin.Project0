@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,72 +10,78 @@ namespace Resturant_Library
 {
     public class Resturant
     {
-        public List<ResturantReviews> ListofReviews { get; set; } //Everything involving resturant reviews
+        public List<ResturantReviews> Reviews { get; set; } //Everything involving resturant reviews
         public string ZipCode { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public string Street { get; set; }
-        public int StreetNum { get; set; }
-        public int ResturantID { get; set; }
+        public int Street_Num { get; set; }
+        public int Resturant_ID { get; set; }
 
 
-        public Resturant() //constructor
+        //public Resturant() //constructor
+        //{
+        //    ListofReviews = new List<ResturantReviews>();
+        //}
+        //public void NewReview(ResturantReviews MyRview) //Method
+        //{
+        //    ListofReviews.Add(MyRview);
+        //}
+
+
+        public List<Resturant> loadJSON()
         {
-            ListofReviews = new List<ResturantReviews>();
+            List<Resturant> resturants = new List<Resturant>();
+            string json;
+            using (StreamReader r = new StreamReader(@"C:\Revature\Griffin.Caitlin.Project0\ResturantStuff.txt"))
+            {
+                json = r.ReadToEnd();
+                resturants = JsonConvert.DeserializeObject<List<Resturant>>(json);
+            }
+            return resturants;
         }
-        public void NewReview(ResturantReviews MyRview) //Method
-        {
-            ListofReviews.Add(MyRview);
-        }
+
 
 
     }
     public class ResturantReviews // Reviews left by a customer
     {
-        public int StarReviews
+        public string Reviewer
         {
-            get
-            {
-                return StarReviews;
-            }
-            set
-            {
-                if (value < 0 || value > 5)  //Made its max count for star reviews to 5
-                {
-                    if (value < 0)
-                    {
-                        StarReviews = 0;
-                    }
-                    else if (value > 5)
-                    {
-                        StarReviews = 5;
-                    }
-                }
-                else StarReviews = value;
-            }
+            get; set;
         }
-
-        public string WrittenReviews { get; set; }
-
+        public int StarRating
+        {
+            get; set;
+        }
+        public string ReviewComment
+        {
+            get; set;
+        }
     }
+    
+
+
+
+    
     public class ResturantReviewer // The customer itself leaving the review
     {
         public string Name { get; set; }
         public int CustomerID { get; set; }
         public string Comment { get; set; }
     }
-
-
-    //public static class Serealizer(); im trying to make a serealizer
-    
-       
 }
 
 
 
-    
-              
-           
+
+
+
+
+
+
+
+
 
 
