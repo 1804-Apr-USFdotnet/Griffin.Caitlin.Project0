@@ -30,17 +30,7 @@ namespace Resturant_Library
         //}
 
 
-        public List<Resturant> loadJSON()
-        {
-            List<Resturant> resturants = new List<Resturant>();
-            string json;
-            using (StreamReader r = new StreamReader(@"C:\Revature\Griffin.Caitlin.Project0\ResturantStuff.txt"))
-            {
-                json = r.ReadToEnd();
-                resturants = JsonConvert.DeserializeObject<List<Resturant>>(json);
-            }
-            return resturants;
-        }
+        
 
 
 
