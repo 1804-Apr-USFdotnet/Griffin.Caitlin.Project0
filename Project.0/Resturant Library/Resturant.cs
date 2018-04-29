@@ -1,23 +1,22 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace Resturant_Library
+
 {
+    
     public class Resturant
     {
-        public List<ResturantReviews> Reviews { get; set; } //Everything involving resturant reviews
-        public string ZipCode { get; set; }
+        
+        [Key]
+        public int id { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public string Street { get; set; }
-        public int Street_Num { get; set; }
-        public int Resturant_ID { get; set; }
+        public double AverageRating { get; set; }
 
 
         //public Resturant() //constructor
@@ -26,17 +25,17 @@ namespace Resturant_Library
         //}
         //public void NewReview(ResturantReviews MyRview) //Method
         //{
-        //    ListofReviews.Add(MyRview);
+        //   Reviews.Add(MyRview);
         //}
-
-
-        
-
-
 
     }
     public class ResturantReviews // Reviews left by a customer
     {
+        
+        [Key]
+        
+        public int Review_ID { get; set; }
+        public int Resturant_ID { get; set; }
         public string Reviewer
         {
             get; set;
@@ -49,18 +48,13 @@ namespace Resturant_Library
         {
             get; set;
         }
-    }
-    
-
-
-
-    
-    public class ResturantReviewer // The customer itself leaving the review
-    {
-        public string Name { get; set; }
-        public int CustomerID { get; set; }
-        public string Comment { get; set; }
-    }
+    }      
+    //public class ResturantReviewer // The customer itself leaving the review
+    //{
+    //    public string Name { get; set; }
+    //    public int CustomerID { get; set; }
+    //    public string Comment { get; set; }
+    //}
 }
 
 

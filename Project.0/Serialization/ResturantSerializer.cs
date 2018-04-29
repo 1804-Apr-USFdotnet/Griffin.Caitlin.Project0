@@ -23,5 +23,12 @@ namespace Serialization
             }
             return resturants;
         }
+
+
+    }
+
+    public class Resturants
+    {
+        public List<Resturant> resturants { get; set; }
     }
 }

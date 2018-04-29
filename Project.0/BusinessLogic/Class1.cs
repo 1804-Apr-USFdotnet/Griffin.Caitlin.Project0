@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLibrary
+namespace BusinessLogic
 {
     public class Class1
-    {
+    { 
+     
     }
 }

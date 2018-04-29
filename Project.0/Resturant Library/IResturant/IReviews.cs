@@ -8,5 +8,6 @@ namespace Resturant_Library.IResturant
 {
     interface IReviews
     {
+
     }
 }
