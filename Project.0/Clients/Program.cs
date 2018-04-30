@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLibrary;
-using Resturant_Library;
 using NLog;
 
 
@@ -14,15 +11,7 @@ namespace Clients
     {
         static void Main(string[] args)
         {
-
-            //ResturauntContext c = new ResturauntContext(); -----------useless now---------------
-            //foreach( DataLibrary.Resturant r in c.Resturants)
-            //{
-            //    Console.WriteLine(r);
-            //}
-            //Console.WriteLine(c);
-            //Console.ReadLine();
-
+         
             Logger log = LogManager.GetCurrentClassLogger();
             int ReviewSelection;
             CrudStuff cs = new CrudStuff();
@@ -48,12 +37,21 @@ namespace Clients
                         Console.WriteLine("Enter Id of Resturant");
                         int id = int.Parse(Console.ReadLine());
                         DataLibrary.Resturant rest = cs.FindRestByID(id);
-                        Console.WriteLine(rest.id);
-                        Console.WriteLine(rest.Name);
-                        Console.WriteLine(rest.City);
-                        Console.WriteLine(rest.State);
-                        Console.WriteLine(rest.Street);
-                        Console.WriteLine(rest.AverageRating);
+                        try
+                        {
+                          
+                            Console.WriteLine(rest.id);
+                            Console.WriteLine(rest.Name);
+                            Console.WriteLine(rest.City);
+                            Console.WriteLine(rest.State);
+                            Console.WriteLine(rest.Street);
+                            Console.WriteLine(rest.AverageRating);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("That ID does not exist");
+                            log.Error($"{id} that ID does not Exist");
+                        }
 
                         break;
                     case 4:
@@ -76,13 +74,22 @@ namespace Clients
                     case 5:
                         Console.WriteLine("Enter the Resturant Name");
                         string ResturantName = Console.ReadLine();
-
-                        IEnumerable<DataLibrary.Resturant> by = cs.FindResturantbyName(ResturantName);
-
-                        foreach(var rest1 in by)
+                        
+                        {
+                            IEnumerable<DataLibrary.Resturant> by = cs.FindResturantbyName(ResturantName);
+                            if (by.Any())
                             {
-                            Console.WriteLine(rest1.id + " " + rest1.Name);
+                                foreach (var rest1 in by)
+                                {
+                                    Console.WriteLine(rest1.id + " " + rest1.Name);
+                                }
                             }
+                            else
+                            {
+                                Console.WriteLine("There is no Resturant by that name");
+                                log.Error($"{ResturantName} Does not Exist");
+                            }
+                        }
                         break;
                     
                         
@@ -91,17 +98,24 @@ namespace Clients
 
         }
 
-        static int GetReviewSelection()
-        {
+        private static int GetReviewSelection()
+        {                       
             Console.WriteLine("1. Display top 3 Resturants");
             Console.WriteLine("2. Show all Resturants");
             Console.WriteLine("3. Show all Detils of Resturants");
             Console.WriteLine("4. Display all Reviews of a Resturant");
             Console.WriteLine("5. Show Resturants by Name");
             Console.WriteLine("6. End");
-
-            return int.Parse(Console.ReadLine());
+            try
+            {
+                return int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("--------You have to type something------------");                
+                GetReviewSelection();
+                return 0;               
+            }
         }
-
     }
 }

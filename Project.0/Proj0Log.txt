@@ -1,1 +1,10 @@
 2018-04-29 23:12:52.7407|ERROR|Clients.Program|6 does not exist as a Resturant ID
+2018-04-29 23:26:13.8638|ERROR|Clients.Program|hrsek Does not Exist
+2018-04-29 23:31:10.3124|ERROR|Clients.Program|8 that ID does not Exist
+2018-04-29 23:32:40.6512|ERROR|Clients.Program|7 that ID does not Exist
+2018-04-29 23:32:51.6784|ERROR|Clients.Program|7 does not exist as a Resturant ID
+2018-04-29 23:32:57.0728|ERROR|Clients.Program|dfkm.nmdl Does not Exist
+2018-04-30 00:14:16.9695|ERROR|Clients.Program|7 that ID does not Exist
+2018-04-30 00:14:46.6748|ERROR|Clients.Program|6 does not exist as a Resturant ID
+2018-04-30 00:14:55.1365|ERROR|Clients.Program|jklxmkldl xzm Does not Exist
+2018-04-30 00:47:49.9297|ERROR|Clients.Program|7 that ID does not Exist
