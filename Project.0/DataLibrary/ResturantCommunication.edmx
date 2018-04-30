@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ResturantDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ResturantReviews">
+          <Key>
+            <PropertyRef Name="Review_ID" />
+          </Key>
+          <Property Name="Review_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Resturant_ID" Type="int" Nullable="false" />
+          <Property Name="Reviewer" Type="nvarchar(max)" />
+          <Property Name="StarRating" Type="int" Nullable="false" />
+          <Property Name="ReviewComment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Resturants">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="Street" Type="nvarchar(max)" />
+          <Property Name="AverageRating" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ResturantReviews_Resturants">
+          <End Role="Resturants" Type="Self.Resturants" Multiplicity="1" />
+          <End Role="ResturantReviews" Type="Self.ResturantReviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resturants">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ResturantReviews">
+              <PropertyRef Name="Resturant_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ResturantDbModelStoreContainer">
+          <EntitySet Name="ResturantReviews" EntityType="Self.ResturantReviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resturants" EntityType="Self.Resturants" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ResturantReviews_Resturants" Association="Self.FK_ResturantReviews_Resturants">
+            <End Role="Resturants" EntitySet="Resturants" />
+            <End Role="ResturantReviews" EntitySet="ResturantReviews" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ResturantDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ResturantDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ResturantReviews" EntityType="ResturantDbModel.ResturantReview" />
+          <EntitySet Name="Resturants" EntityType="ResturantDbModel.Resturant" />
+          <AssociationSet Name="FK_ResturantReviews_Resturants" Association="ResturantDbModel.FK_ResturantReviews_Resturants">
+            <End Role="Resturant" EntitySet="Resturants" />
+            <End Role="ResturantReview" EntitySet="ResturantReviews" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ResturantReview">
+          <Key>
+            <PropertyRef Name="Review_ID" />
+          </Key>
+          <Property Name="Review_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Resturant_ID" Type="Int32" Nullable="false" />
+          <Property Name="Reviewer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StarRating" Type="Int32" Nullable="false" />
+          <Property Name="ReviewComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Resturant" Relationship="ResturantDbModel.FK_ResturantReviews_Resturants" FromRole="ResturantReview" ToRole="Resturant" />
+        </EntityType>
+        <EntityType Name="Resturant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AverageRating" Type="Double" Nullable="false" />
+          <NavigationProperty Name="ResturantReviews" Relationship="ResturantDbModel.FK_ResturantReviews_Resturants" FromRole="Resturant" ToRole="ResturantReview" />
+        </EntityType>
+        <Association Name="FK_ResturantReviews_Resturants">
+          <End Type="ResturantDbModel.Resturant" Role="Resturant" Multiplicity="1" />
+          <End Type="ResturantDbModel.ResturantReview" Role="ResturantReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resturant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ResturantReview">
+              <PropertyRef Name="Resturant_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ResturantDbModelStoreContainer" CdmEntityContainer="ResturantDbEntities">
+          <EntitySetMapping Name="ResturantReviews">
+            <EntityTypeMapping TypeName="ResturantDbModel.ResturantReview">
+              <MappingFragment StoreEntitySet="ResturantReviews">
+                <ScalarProperty Name="ReviewComment" ColumnName="ReviewComment" />
+                <ScalarProperty Name="StarRating" ColumnName="StarRating" />
+                <ScalarProperty Name="Reviewer" ColumnName="Reviewer" />
+                <ScalarProperty Name="Resturant_ID" ColumnName="Resturant_ID" />
+                <ScalarProperty Name="Review_ID" ColumnName="Review_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resturants">
+            <EntityTypeMapping TypeName="ResturantDbModel.Resturant">
+              <MappingFragment StoreEntitySet="Resturants">
+                <ScalarProperty Name="AverageRating" ColumnName="AverageRating" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

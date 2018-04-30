@@ -12,8 +12,8 @@ namespace DataLibrary
     {
         public ResturauntContext() : base ("name=ResturantString") //------taking the stuff from the base constructor
         {
-            this.Database.Connection.ConnectionString = "Data Source=ERNIE-LAPTOP;Initial Catalog=ResturantDb;Integrated Security=True";
-            Database.SetInitializer<ResturauntContext>(new DBInit());
+            //this.Database.Connection.ConnectionString = "Data Source=ERNIE-LAPTOP;Initial Catalog=ResturantDb;Integrated Security=True";
+            //Database.SetInitializer<ResturauntContext>(new DBInit());
         }
         public DbSet<Resturant> Resturants { get; set; }   
         public DbSet<ResturantReviews> Reviews { get; set; }

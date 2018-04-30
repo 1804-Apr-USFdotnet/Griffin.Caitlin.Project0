@@ -42,6 +42,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,13 +52,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrudStuff.cs" />
     <Compile Include="DBInit.cs" />
+    <Compile Include="Mapper.cs" />
+    <Compile Include="Resturant.cs">
+      <DependentUpon>ResturantCommunication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResturantCommunication.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResturantCommunication.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResturantCommunication.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResturantCommunication.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResturantCommunication.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResturantCommunication.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ResturantReview.cs">
+      <DependentUpon>ResturantCommunication.tt</DependentUpon>
+    </Compile>
     <Compile Include="ResturauntContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="ResturantCommunication.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ResturantCommunication.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ResturantCommunication.edmx.diagram">
+      <DependentUpon>ResturantCommunication.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Resturant Library\Resturant Library.csproj">
@@ -67,6 +99,21 @@
       <Project>{5fb2ff41-678f-4d55-b4b0-2e5bd354a80a}</Project>
       <Name>Serialization</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ResturantCommunication.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ResturantCommunication.edmx</DependentUpon>
+      <LastGenOutput>ResturantCommunication.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ResturantCommunication.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ResturantCommunication.edmx</DependentUpon>
+      <LastGenOutput>ResturantCommunication.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

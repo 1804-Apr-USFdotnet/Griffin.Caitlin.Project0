@@ -19,6 +19,8 @@ namespace Resturant_Library
         public double AverageRating { get; set; }
 
 
+        public List<ResturantReviews> Reviews{ get; set; }
+
         //public Resturant() //constructor
         //{
         //    ListofReviews = new List<ResturantReviews>();
@@ -49,12 +51,7 @@ namespace Resturant_Library
             get; set;
         }
     }      
-    //public class ResturantReviewer // The customer itself leaving the review
-    //{
-    //    public string Name { get; set; }
-    //    public int CustomerID { get; set; }
-    //    public string Comment { get; set; }
-    //}
+   
 }
 
 
