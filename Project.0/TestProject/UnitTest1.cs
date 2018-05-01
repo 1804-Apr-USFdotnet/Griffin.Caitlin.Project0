@@ -14,7 +14,7 @@ namespace TestProject
         {
             Resturant NewResturant = new Resturant();           // Arrange
             //ResturantReviews NewReview = new ResturantReviews();
-           // var t = NewResturant.loadJSON();
+           var t = NewResturant.loadJSON();
 
             //NewResturant.NewReview(NewReview); //Act
 

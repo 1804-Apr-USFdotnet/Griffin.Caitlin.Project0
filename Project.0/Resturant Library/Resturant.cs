@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 
 namespace Resturant_Library
 
-{
-    
+{   
     public class Resturant
     {
         

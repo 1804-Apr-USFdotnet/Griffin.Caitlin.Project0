@@ -10,6 +10,11 @@ namespace DataLibrary
     public class CrudStuff
     {
         ResturantDbEntities db = new ResturantDbEntities();
+        public void addResturant(Resturant_Library.Resturant resturant)
+        {
+            db.Resturants.Add(Mapper.ConvertdbfromResturant(resturant));
+            db.SaveChanges();
+        }       
         public IEnumerable<ResturantReview>ShowReview()
             {
             return db.ResturantReviews.ToList();
@@ -36,7 +41,6 @@ namespace DataLibrary
         {
             return db.Resturants.Include("ResturantReviews").ToList();
         }
-
         public IEnumerable<Resturant> ShowResturantsByRating()
         {
             return db.Resturants.OrderByDescending(x => x.AverageRating).Take(3).Include("ResturantReviews").ToList();
@@ -45,7 +49,6 @@ namespace DataLibrary
         {
             return db.Resturants.OrderByDescending(x => x.Name).Take(3).Include("ResturantReviews").ToList();
         }
-
         public IEnumerable<Resturant> FindResturantbyName(string name)
         {
             return db.Resturants.Where(x => x.Name.Contains(name)).Include("ResturantReviews").ToList();

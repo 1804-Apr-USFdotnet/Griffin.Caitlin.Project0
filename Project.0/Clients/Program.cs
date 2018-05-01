@@ -11,24 +11,25 @@ namespace Clients
     {
         static void Main(string[] args)
         {
-         
+            CrudStuff crudStuff = new CrudStuff();
+
             Logger log = LogManager.GetCurrentClassLogger();
             int ReviewSelection;
             CrudStuff cs = new CrudStuff();
-            while ((ReviewSelection = GetReviewSelection()) !=6)
+            while ((ReviewSelection = GetReviewSelection()) != 6)
             {
-             switch(ReviewSelection)
+                switch (ReviewSelection)
                 {
                     case 1:
                         IEnumerable<DataLibrary.Resturant> list = cs.ShowResturantsByRating();
-                        foreach(var list1 in list)
+                        foreach (var list1 in list)
                         {
                             Console.WriteLine(list1.AverageRating + " " + list1.Name);
                         }
                         break;
                     case 2:
                         IEnumerable<DataLibrary.Resturant> name = cs.ShowResturants();
-                        foreach(var name1 in name)
+                        foreach (var name1 in name)
                         {
                             Console.WriteLine(name1.Name + " ");
                         }
@@ -39,14 +40,14 @@ namespace Clients
                         DataLibrary.Resturant rest = cs.FindRestByID(id);
                         try
                         {
-                          
+
                             Console.WriteLine(rest.id);
-                            Console.WriteLine(rest.Name);
-                            Console.WriteLine(rest.City);
-                            Console.WriteLine(rest.State);
-                            Console.WriteLine(rest.Street);
-                            Console.WriteLine(rest.AverageRating);
-                        }
+            Console.WriteLine(rest.Name);
+            Console.WriteLine(rest.City);
+            Console.WriteLine(rest.State);
+            Console.WriteLine(rest.Street);
+            Console.WriteLine(rest.AverageRating);
+        }
                         catch
                         {
                             Console.WriteLine("That ID does not exist");
@@ -57,7 +58,7 @@ namespace Clients
                     case 4:
                         Console.WriteLine("Enter Id of Resturant");
                         int i = int.Parse(Console.ReadLine());
-                        DataLibrary.Resturant restr = cs.FindRestByID(i);
+    DataLibrary.Resturant restr = cs.FindRestByID(i);
                         try
                         {
                             foreach (var rev1 in restr.ResturantReviews)
@@ -70,33 +71,33 @@ namespace Clients
                             Console.WriteLine("There is no ID for that Resturant");
                             log.Error($"{i} does not exist as a Resturant ID");
                         }
-                        break;
+            break;
                     case 5:
                         Console.WriteLine("Enter the Resturant Name");
-                        string ResturantName = Console.ReadLine();
-                        
-                        {
-                            IEnumerable<DataLibrary.Resturant> by = cs.FindResturantbyName(ResturantName);
-                            if (by.Any())
-                            {
-                                foreach (var rest1 in by)
-                                {
-                                    Console.WriteLine(rest1.id + " " + rest1.Name);
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("There is no Resturant by that name");
-                                log.Error($"{ResturantName} Does not Exist");
-                            }
-                        }
-                        break;
-                    
-                        
+            string ResturantName = Console.ReadLine();
+
+            {
+                IEnumerable<DataLibrary.Resturant> by = cs.FindResturantbyName(ResturantName);
+                if (by.Any())
+                {
+                    foreach (var rest1 in by)
+                    {
+                        Console.WriteLine(rest1.id + " " + rest1.Name);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("There is no Resturant by that name");
+                    log.Error($"{ResturantName} Does not Exist");
                 }
             }
+            break;
+
 
         }
+    }
+
+}
 
         private static int GetReviewSelection()
         {                       
