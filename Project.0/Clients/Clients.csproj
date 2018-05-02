@@ -76,17 +76,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLibrary\DataLibrary.csproj">
-      <Project>{1404b28a-8249-4280-81df-f61666caef30}</Project>
-      <Name>DataLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Resturant Library\Resturant Library.csproj">
       <Project>{6a739e73-4b7d-4b34-b575-d327d6b46393}</Project>
       <Name>Resturant Library</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Serialization\Serialization.csproj">
-      <Project>{5fb2ff41-678f-4d55-b4b0-2e5bd354a80a}</Project>
-      <Name>Serialization</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,17 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using DataLibrary;
 using Newtonsoft.Json;
+using NLog;
 
 
 namespace Resturant_Library
 {
-    class ClientBusinessMidMan
+    public class ClientBusinessMidMan
     {
-        CrudStuff crudStuff = new CrudStuff();
-
         Logger log = LogManager.GetCurrentClassLogger();
-        int ReviewSelection;
+
         CrudStuff cs = new CrudStuff();
+        public void SelectionHandler()
+        {
+            int ReviewSelection = GetReviewSelection();
+
             while ((ReviewSelection = GetReviewSelection()) != 6)
             {
                 switch (ReviewSelection)
@@ -27,6 +30,7 @@ namespace Resturant_Library
                             Console.WriteLine(list1.AverageRating + " " + list1.Name);
                         }
                         break;
+
                     case 2:
                         IEnumerable<DataLibrary.Resturant> name = cs.ShowResturants();
                         foreach (var name1 in name)
@@ -34,31 +38,30 @@ namespace Resturant_Library
                             Console.WriteLine(name1.Name + " ");
                         }
                         break;
+
                     case 3:
                         Console.WriteLine("Enter Id of Resturant");
                         int id = int.Parse(Console.ReadLine());
-DataLibrary.Resturant rest = cs.FindRestByID(id);
+                        DataLibrary.Resturant rest = cs.FindRestByID(id);
                         try
                         {
-
                             Console.WriteLine(rest.id);
-            Console.WriteLine(rest.Name);
-            Console.WriteLine(rest.City);
-            Console.WriteLine(rest.State);
-            Console.WriteLine(rest.Street);
-            Console.WriteLine(rest.AverageRating);
-        }
+                            Console.WriteLine(rest.Name);
+                            Console.WriteLine(rest.City);
+                            Console.WriteLine(rest.State);
+                            Console.WriteLine(rest.Street);
+                            Console.WriteLine(rest.AverageRating);
+                        }
                         catch
                         {
                             Console.WriteLine("That ID does not exist");
                             log.Error($"{id} that ID does not Exist");
                         }
-
                         break;
                     case 4:
                         Console.WriteLine("Enter Id of Resturant");
                         int i = int.Parse(Console.ReadLine());
-DataLibrary.Resturant restr = cs.FindRestByID(i);
+                        DataLibrary.Resturant restr = cs.FindRestByID(i);
                         try
                         {
                             foreach (var rev1 in restr.ResturantReviews)
@@ -71,53 +74,52 @@ DataLibrary.Resturant restr = cs.FindRestByID(i);
                             Console.WriteLine("There is no ID for that Resturant");
                             log.Error($"{i} does not exist as a Resturant ID");
                         }
-            break;
+                        break;
                     case 5:
                         Console.WriteLine("Enter the Resturant Name");
-            string ResturantName = Console.ReadLine();
+                        string ResturantName = Console.ReadLine();
 
-            {
-                IEnumerable<DataLibrary.Resturant> by = cs.FindResturantbyName(ResturantName);
-                if (by.Any())
-                {
-                    foreach (var rest1 in by)
-                    {
-                        Console.WriteLine(rest1.id + " " + rest1.Name);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("There is no Resturant by that name");
-                    log.Error($"{ResturantName} Does not Exist");
+                        {
+                            IEnumerable<DataLibrary.Resturant> by = cs.FindResturantbyName(ResturantName);
+                            if (by.Any())
+                            {
+                                foreach (var rest1 in by)
+                                {
+                                    Console.WriteLine(rest1.id + " " + rest1.Name);
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("There is no Resturant by that name");
+                                log.Error($"{ResturantName} Does not Exist");
+                            }
+
+                            break;
+                        }
+
                 }
             }
-            break;
-
-
         }
-    }
-
-}
 
         private static int GetReviewSelection()
-{
-    Console.WriteLine("1. Display top 3 Resturants");
-    Console.WriteLine("2. Show all Resturants");
-    Console.WriteLine("3. Show all Detils of Resturants");
-    Console.WriteLine("4. Display all Reviews of a Resturant");
-    Console.WriteLine("5. Show Resturants by Name");
-    Console.WriteLine("6. End");
-    try
-    {
-        return int.Parse(Console.ReadLine());
-    }
-    catch
-    {
-        Console.WriteLine("--------You have to type something------------");
-        GetReviewSelection();
-        return 0;
-    }
-}
-    }
+        {
+            Console.WriteLine("1. Display top 3 Resturants");
+            Console.WriteLine("2. Show all Resturants");
+            Console.WriteLine("3. Show all Detils of Resturants");
+            Console.WriteLine("4. Display all Reviews of a Resturant");
+            Console.WriteLine("5. Show Resturants by Name");
+            Console.WriteLine("6. End");
+            try
+            {
+                return int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("--------You have to type something------------");
+                GetReviewSelection();
+                return 0;
+            }
+
+        }
     }
 }

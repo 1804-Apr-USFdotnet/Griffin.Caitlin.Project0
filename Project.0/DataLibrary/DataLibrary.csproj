@@ -91,12 +91,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Serialization\Serialization.csproj">
-      <Project>{5fb2ff41-678f-4d55-b4b0-2e5bd354a80a}</Project>
-      <Name>Serialization</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="ResturantCommunication.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ResturantCommunication.edmx</DependentUpon>
