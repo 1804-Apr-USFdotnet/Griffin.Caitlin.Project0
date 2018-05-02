@@ -8,9 +8,17 @@ namespace Resturant_Library
 {   
     public class Resturant
     {
-        
+
+        private string id;
+        private string name;
+        private string city;
+        private string state;
+        private string street;
+        private string averageRating;
+
+
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
         public string State { get; set; }

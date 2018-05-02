@@ -91,10 +91,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Resturant Library\Resturant Library.csproj">
-      <Project>{6a739e73-4b7d-4b34-b575-d327d6b46393}</Project>
-      <Name>Resturant Library</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Serialization\Serialization.csproj">
       <Project>{5fb2ff41-678f-4d55-b4b0-2e5bd354a80a}</Project>
       <Name>Serialization</Name>
