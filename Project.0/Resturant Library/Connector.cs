@@ -10,7 +10,7 @@ namespace Resturant_Library
     public static class Connector
     {
       public static Resturant_Library.Resturant DataResturanttoLibraryResturant(DataLibrary.Resturant dataset)
-        {
+      {
             var libmodel = new Resturant_Library.Resturant() // converting information from the database for the resturant library to understand
             {
                 Name = dataset.Name,
@@ -21,7 +21,7 @@ namespace Resturant_Library
                 Street = dataset.Street
             };
              return libmodel;
-        }
+      }
 
         public static ICollection<Resturant> ConvertDataListtoLibraryList(ICollection<DataLibrary.Resturant> Datalist)
         {

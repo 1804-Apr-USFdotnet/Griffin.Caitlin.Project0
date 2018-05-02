@@ -37,7 +37,7 @@ namespace DataLibrary
             }
             return returnrest;
         }
-        public IEnumerable<Resturant> ShowResturants()
+        public List<Resturant> ShowResturants()
         {
             return db.Resturants.Include("ResturantReviews").ToList();
         }

@@ -53,7 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CrudStuff.cs" />
-    <Compile Include="DBInit.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Resturant.cs">
       <DependentUpon>ResturantCommunication.tt</DependentUpon>
@@ -76,7 +75,6 @@
     <Compile Include="ResturantReview.cs">
       <DependentUpon>ResturantCommunication.tt</DependentUpon>
     </Compile>
-    <Compile Include="ResturauntContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

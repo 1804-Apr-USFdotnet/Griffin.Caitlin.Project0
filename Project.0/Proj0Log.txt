@@ -10,3 +10,11 @@
 2018-04-30 00:47:49.9297|ERROR|Clients.Program|7 that ID does not Exist
 2018-05-01 19:00:08.1131|ERROR|Clients.Program|2 that ID does not Exist
 2018-05-01 21:16:05.6647|ERROR|Resturant_Library.ClientBusinessMidMan|3 that ID does not Exist
+2018-05-01 21:25:15.0156|ERROR|Resturant_Library.ClientBusinessMidMan|1 that ID does not Exist
+2018-05-01 21:25:19.7754|ERROR|Resturant_Library.ClientBusinessMidMan|7 that ID does not Exist
+2018-05-01 21:25:28.7189|ERROR|Resturant_Library.ClientBusinessMidMan|2 that ID does not Exist
+2018-05-01 21:25:38.6531|ERROR|Resturant_Library.ClientBusinessMidMan|1 that ID does not Exist
+2018-05-01 21:25:46.6990|ERROR|Resturant_Library.ClientBusinessMidMan|1 that ID does not Exist
+2018-05-01 21:25:53.0280|ERROR|Resturant_Library.ClientBusinessMidMan|2 that ID does not Exist
+2018-05-01 21:26:04.2834|ERROR|Resturant_Library.ClientBusinessMidMan|1 does not exist as a Resturant ID
+2018-05-01 21:26:13.4173|ERROR|Resturant_Library.ClientBusinessMidMan|2 does not exist as a Resturant ID

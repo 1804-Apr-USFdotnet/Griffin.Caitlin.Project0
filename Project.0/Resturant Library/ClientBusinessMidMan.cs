@@ -15,16 +15,19 @@ namespace Resturant_Library
         Logger log = LogManager.GetCurrentClassLogger();
 
         CrudStuff cs = new CrudStuff();
+        Sorter sorts = new Sorter();
+        List<DataLibrary.Resturant> list;
+        List<Resturant_Library.Resturant> converted;
         public void SelectionHandler()
         {
-            int ReviewSelection = GetReviewSelection();
-
+            int ReviewSelection;
+            converted = (List<Resturant_Library.Resturant>)sorts.sorterconvert(cs.ShowResturants());
             while ((ReviewSelection = GetReviewSelection()) != 6)
             {
                 switch (ReviewSelection)
                 {
                     case 1:
-                        IEnumerable<DataLibrary.Resturant> list = cs.ShowResturantsByRating();
+                         converted = (List<Resturant_Library.Resturant>)sorts.ShowResturantsbyRating(converted);
                         foreach (var list1 in list)
                         {
                             Console.WriteLine(list1.AverageRating + " " + list1.Name);
@@ -32,8 +35,7 @@ namespace Resturant_Library
                         break;
 
                     case 2:
-                        IEnumerable<DataLibrary.Resturant> name = cs.ShowResturants();
-                        foreach (var name1 in name)
+                        foreach (var name1 in converted)
                         {
                             Console.WriteLine(name1.Name + " ");
                         }
@@ -80,21 +82,21 @@ namespace Resturant_Library
                         string ResturantName = Console.ReadLine();
 
                         {
-                            IEnumerable<DataLibrary.Resturant> by = cs.FindResturantbyName(ResturantName);
-                            if (by.Any())
-                            {
-                                foreach (var rest1 in by)
+                            converted= (List<Resturant_Library.Resturant>)sorts.FindResturantbyName(converted,ResturantName);
+                            //if (sorts.(by))
+                            //{
+                                foreach (var rest1 in converted)
                                 {
-                                    Console.WriteLine(rest1.id + " " + rest1.Name);
+                                    Console.WriteLine(rest1.Id + " " + rest1.Name);
                                 }
-                            }
-                            else
-                            {
-                                Console.WriteLine("There is no Resturant by that name");
-                                log.Error($"{ResturantName} Does not Exist");
-                            }
+                                //}
+                                //else
+                                //{
+                                //    Console.WriteLine("There is no Resturant by that name");
+                                //    log.Error($"{ResturantName} Does not Exist");
+                                //}
 
-                            break;
+                                break;
                         }
 
                 }
