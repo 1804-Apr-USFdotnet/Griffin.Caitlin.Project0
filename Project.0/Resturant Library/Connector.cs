@@ -9,7 +9,8 @@ namespace Resturant_Library
 {
     public static class Connector
     {
-      public static Resturant_Library.Resturant DataResturanttoLibraryResturant(DataLibrary.Resturant dataset)
+        static CrudStuff crud = new CrudStuff();
+        public static Resturant_Library.Resturant DataResturanttoLibraryResturant(DataLibrary.Resturant dataset)
       {
             var libmodel = new Resturant_Library.Resturant() // converting information from the database for the resturant library to understand
             {
@@ -33,7 +34,42 @@ namespace Resturant_Library
             return rests;
         }
 
+        public static ICollection<Resturant> AllResturants()
+        {
+            return ConvertDataListtoLibraryList(crud.ShowResturants());
+        }
 
+        public static Resturant FindResturantsByID(int i)
+        {
+            return DataResturanttoLibraryResturant(crud.FindRestByID(i));
+        }
+
+        public static ResturantReviews DataReviewtoLibraryReview(ResturantReview revset)
+        {
+            var revmodel = new ResturantReviews()
+            {
+                Review_ID = revset.Review_ID,
+                Resturant_ID = revset.Resturant_ID,
+                Reviewer = revset.Reviewer,
+                StarRating = revset.StarRating,
+                ReviewComment = revset.ReviewComment
+            };
+            return revmodel;
+        } //converts a review from the data library to the resturant library
+        public static ICollection<ResturantReviews> DataReviewListtoLibraryReviewList(ICollection<ResturantReview> datarev)
+        {
+            ICollection<ResturantReviews> revs = new List<ResturantReviews>();
+            foreach(ResturantReview d in datarev)
+            {
+                revs.Add(DataReviewtoLibraryReview(d));
+            }
+            return revs;
+        }
+
+        public static ICollection<ResturantReviews> AllReviews()
+        {
+            return DataReviewListtoLibraryReviewList(crud.ShowReview().ToList());
+        }
     }
     
 }

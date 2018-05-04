@@ -7,7 +7,7 @@ using DataLibrary;
 
 namespace Resturant_Library
 {
-    public class Sorter
+    public class Sorter     // ----takes the results and sorts the list results
     {
         CrudStuff Crud = new CrudStuff();
         public ICollection<Resturant> sorterconvert (List<DataLibrary.Resturant> tempz)
@@ -23,6 +23,7 @@ namespace Resturant_Library
         {
             return temp.OrderByDescending(x => x.AverageRating).Take(3).ToList();
         }
-    }
-    
+
+        
+    }  
 }
