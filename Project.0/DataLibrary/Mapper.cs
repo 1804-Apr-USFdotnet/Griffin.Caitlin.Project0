@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataLibrary
 {
-    public class Mapper
+    public class Mapper// <-------------------Used to map info to the database, but sinced its already mapped, I dont need it, but I keep it just in case
     {
         //public static Resturant_Library.Resturant ConvertResturantfromDb(Resturant rest)
         //{

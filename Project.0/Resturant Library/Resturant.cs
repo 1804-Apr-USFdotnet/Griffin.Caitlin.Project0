@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace Resturant_Library
 
 {   
-    public class Resturant
+    public class Resturant//<---------------Resturant class, concrete class
     {
 
         private string id;
@@ -28,7 +28,7 @@ namespace Resturant_Library
 
         public List<ResturantReviews> Reviews{ get; set; }
 
-        //public Resturant() //constructor
+        //public Resturant() //constructor <--------------Example, i keep it to use as reference
         //{
         //    ListofReviews = new List<ResturantReviews>();
         //}
@@ -38,7 +38,7 @@ namespace Resturant_Library
         //}
 
     }
-    public class ResturantReviews // Reviews left by a customer
+    public class ResturantReviews // Reviews left by a customer, concrete class
     {
         
         [Key]

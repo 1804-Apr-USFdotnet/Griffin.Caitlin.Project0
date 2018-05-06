@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="ClientBusinessMidMan.cs" />
     <Compile Include="Connector.cs" />
+    <Compile Include="ICrudstuff\ICrudStuff.cs" />
     <Compile Include="IResturant\IReviews.cs" />
     <Compile Include="NewSerealizer.cs" />
     <Compile Include="Resturant.cs" />

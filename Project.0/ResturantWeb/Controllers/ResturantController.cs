@@ -22,16 +22,25 @@ namespace ResturantWeb.Controllers
         // GET: Resturant/Create
         public ActionResult Create()
         {
-            return View(Connector.LibraryResttoDataRest, infoforCreate());//<-----------!!!!wat
+            return View();//<-----------!!!!wat   Connector.LibraryResttoDataRest()) save for later?
         }
         // POST: Resturant/Create
         [HttpPost]   //<-----------------put all the stuff in this
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Include ="id, Name, City, State, Street, Average Rating")] Resturant infoforCreate)
         {
             try
             {
                 // TODO: Add insert logic here
-                var name = collection["name"];
+                var name = infoforCreate.Name;
+                var id = infoforCreate.Id;
+                var AverageRating = infoforCreate.AverageRating;
+                var City = infoforCreate.City;
+                var State = infoforCreate.State;
+                var Street = infoforCreate.Street;
+
+
+
+
                 return RedirectToAction("Index");
             }           
             catch

@@ -37,7 +37,7 @@ namespace Resturant_Library
         public static Resturant FindResturantsByID(int i)
         {
             return DataResturanttoLibraryResturant(crud.FindRestByID(i));
-        }
+        }//<--------Method to return the id of a resturant, used for searching
         public static ResturantReviews DataReviewtoLibraryReview(ResturantReview revset)
         {
             var revmodel = new ResturantReviews()
@@ -62,10 +62,10 @@ namespace Resturant_Library
         public static ICollection<ResturantReviews> AllReviews()
         {
             return DataReviewListtoLibraryReviewList(crud.ShowReview().ToList());
-        }
-        public static DataLibrary.Resturant LibraryResttoDataRest (Resturant_Library.Resturant infoforCreate)
+        }//<-----------Generates all reviews in a resturant
+        public static DataLibrary.Resturant LibraryResttoDataRest (Resturant_Library.Resturant infoforCreate)//<---------used for creating resturants
         {
-            var datamodel = new DataLibrary.Resturant() //<---------used for creating resturants
+            var datamodel = new DataLibrary.Resturant() 
             {
                 Name = infoforCreate.Name,
                 id = infoforCreate.Id,
