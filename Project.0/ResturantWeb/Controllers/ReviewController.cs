@@ -1,50 +1,54 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
-using Resturant_Library;
 
 namespace ResturantWeb.Controllers
 {
-
-    public class ResturantController : Controller
+    public class ReviewController : Controller
     {
-        // GET: Resturant
+        // GET: Review
         public ActionResult Index()
         {
-            return View(Connector.AllResturants());
+            return View();
         }
 
-        // GET: Resturant/Details/5
-        public ActionResult ResturantDetails(int id)
+        // GET: Review/Details/5
+        public ActionResult Details(int id)
         {
-            return View(Connector.FindResturantsByID(id));
+            return View();
         }
 
-        // GET: Resturant/Create
+        // GET: Review/Create
         public ActionResult Create()
         {
-            return View(Connector.LibraryResttoDataRest, infoforCreate());//<-----------!!!!wat
+            return View();
         }
-        // POST: Resturant/Create
-        [HttpPost]   //<-----------------put all the stuff in this
+
+        // POST: Review/Create
+        [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
-                var name = collection["name"];
+
                 return RedirectToAction("Index");
-            }           
+            }
             catch
             {
                 return View();
-            }           
+            }
         }
-        // GET: Resturant/Edit/5
+
+        // GET: Review/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(Connector.FindResturantsByID(id));
+            return View();
         }
-        // POST: Resturant/Edit/5
+
+        // POST: Review/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -59,18 +63,21 @@ namespace ResturantWeb.Controllers
                 return View();
             }
         }
-        // GET: Resturant/Delete/5
+
+        // GET: Review/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(Connector.FindResturantsByID(id));
+            return View();
         }
-        // POST: Resturant/Delete/5
+
+        // POST: Review/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
+
                 return RedirectToAction("Index");
             }
             catch
