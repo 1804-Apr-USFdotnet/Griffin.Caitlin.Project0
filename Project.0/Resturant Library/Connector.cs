@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLibrary;
 
 namespace Resturant_Library
 {
     public static class Connector
-    {
+    {        
         static CrudStuff crud = new CrudStuff();
         public static Resturant_Library.Resturant DataResturanttoLibraryResturant(DataLibrary.Resturant dataset)
-      {
+        {
             var libmodel = new Resturant_Library.Resturant() // converting information from the database for the resturant library to understand
             {
                 Name = dataset.Name,
@@ -22,8 +20,7 @@ namespace Resturant_Library
                 Street = dataset.Street
             };
              return libmodel;
-      }
-
+        }
         public static ICollection<Resturant> ConvertDataListtoLibraryList(ICollection<DataLibrary.Resturant> Datalist)
         {
             ICollection<Resturant> rests = new List<Resturant>();
@@ -33,17 +30,14 @@ namespace Resturant_Library
             }
             return rests;
         }
-
         public static ICollection<Resturant> AllResturants()
         {
             return ConvertDataListtoLibraryList(crud.ShowResturants());
         }
-
         public static Resturant FindResturantsByID(int i)
         {
             return DataResturanttoLibraryResturant(crud.FindRestByID(i));
         }
-
         public static ResturantReviews DataReviewtoLibraryReview(ResturantReview revset)
         {
             var revmodel = new ResturantReviews()
@@ -65,11 +59,22 @@ namespace Resturant_Library
             }
             return revs;
         }
-
         public static ICollection<ResturantReviews> AllReviews()
         {
             return DataReviewListtoLibraryReviewList(crud.ShowReview().ToList());
         }
-    }
-    
+        public static DataLibrary.Resturant LibraryResttoDataRest (Resturant_Library.Resturant infoforCreate)
+        {
+            var datamodel = new DataLibrary.Resturant() //<---------used for creating resturants
+            {
+                Name = infoforCreate.Name,
+                id = infoforCreate.Id,
+                AverageRating = infoforCreate.AverageRating,
+                City = infoforCreate.City,
+                State = infoforCreate.State,
+                Street = infoforCreate.Street,
+            };
+            return datamodel;
+        }        
+    }   
 }

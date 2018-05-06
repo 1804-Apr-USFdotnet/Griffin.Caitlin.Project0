@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using System.Web.Mvc;
 using Resturant_Library;
 
@@ -25,9 +22,8 @@ namespace ResturantWeb.Controllers
         // GET: Resturant/Create
         public ActionResult Create()
         {
-            return View();
+            return View(Connector.LibraryResttoDataRest, infoforCreate());//<-----------!!!!wat
         }
-
         // POST: Resturant/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -35,21 +31,19 @@ namespace ResturantWeb.Controllers
             try
             {
                 // TODO: Add insert logic here
-
+                var name = collection["name"];
                 return RedirectToAction("Index");
-            }
+            }           
             catch
             {
                 return View();
-            }
+            }           
         }
-
         // GET: Resturant/Edit/5
         public ActionResult Edit(int id)
         {
             return View(Connector.FindResturantsByID(id));
         }
-
         // POST: Resturant/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -65,13 +59,11 @@ namespace ResturantWeb.Controllers
                 return View();
             }
         }
-
         // GET: Resturant/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(Connector.FindResturantsByID(id));
         }
-
         // POST: Resturant/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
@@ -79,7 +71,6 @@ namespace ResturantWeb.Controllers
             try
             {
                 // TODO: Add delete logic here
-
                 return RedirectToAction("Index");
             }
             catch
