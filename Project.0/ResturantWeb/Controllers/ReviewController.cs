@@ -10,15 +10,15 @@ namespace ResturantWeb.Controllers
     public class ReviewController : Controller
     {
         // GET: Review
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View(Connector.AllReviews());
+            return View();
         }
 
         // GET: Review/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(Connector.AllReviews(id));
         }
 
         // GET: Review/Create

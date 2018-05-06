@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 
 namespace DataLibrary
@@ -8,14 +9,25 @@ namespace DataLibrary
     public class CrudStuff
     {
         ResturantDbEntities db = new ResturantDbEntities();
+        public void editResturant(Resturant resturant)
+        {
+            db.Entry(resturant).State = EntityState.Modified;
+            db.SaveChanges();            
+        }
+        public void deleteResturant(int id)
+        {
+            Resturant restdel = FindRestByID(id);
+            db.Resturants.Remove(restdel);
+            db.SaveChanges();
+        }
         public void addResturant(Resturant resturant)
         {
             db.Resturants.Add(resturant);
             db.SaveChanges();
         }
-        public IEnumerable<ResturantReview>ShowReview()
+        public IEnumerable<ResturantReview>ShowReview(int id)
             {
-            return db.ResturantReviews.ToList();
+            return db.ResturantReviews.Where(revs => revs.Resturant_ID== id).ToList(); //<---takes the review specific to that id and returns its specific reviews tied to that resturand id
             }
         public Resturant FindRestByID(int id)
         {

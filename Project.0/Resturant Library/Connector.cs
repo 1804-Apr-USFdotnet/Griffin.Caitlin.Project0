@@ -8,6 +8,21 @@ namespace Resturant_Library
     public static class Connector
     {        
         static CrudStuff crud = new CrudStuff();
+        public static void EditResturant(int id, Resturant resturant)
+        {
+            var edit = LibraryResttoDataRest(resturant);
+            crud.editResturant(edit);
+        }
+        public static void DeleteResturant(int id)
+        {
+            var temp = LibraryResttoDataRest(FindResturantsByID(id));
+            crud.deleteResturant(id);
+        }
+        public static void AddResturant(Resturant resturant)
+        {
+            var temp = LibraryResttoDataRest(resturant);
+            crud.addResturant(temp);
+        }
         public static Resturant_Library.Resturant DataResturanttoLibraryResturant(DataLibrary.Resturant dataset)
         {
             var libmodel = new Resturant_Library.Resturant() // converting information from the database for the resturant library to understand
@@ -59,9 +74,9 @@ namespace Resturant_Library
             }
             return revs;
         }
-        public static ICollection<ResturantReviews> AllReviews()
+        public static ICollection<ResturantReviews> AllReviews(int id)
         {
-            return DataReviewListtoLibraryReviewList(crud.ShowReview().ToList());
+            return DataReviewListtoLibraryReviewList(crud.ShowReview(id).ToList());
         }//<-----------Generates all reviews in a resturant
         public static DataLibrary.Resturant LibraryResttoDataRest (Resturant_Library.Resturant infoforCreate)//<---------used for creating resturants
         {

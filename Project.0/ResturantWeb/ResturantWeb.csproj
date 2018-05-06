@@ -208,11 +208,11 @@
     <Content Include="Views\Resturant\Edit.cshtml" />
     <Content Include="Views\Resturant\Delete.cshtml" />
     <Content Include="Views\Resturant\Create.cshtml" />
+    <Content Include="Views\Review\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Review\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
