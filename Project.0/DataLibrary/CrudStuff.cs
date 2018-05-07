@@ -68,7 +68,24 @@ namespace DataLibrary
         {
             return db.Resturants.Where(x => x.Name.Contains(name)).ToList();
         }
-
+        public ResturantReview FindReviewbyId(int id)
+        {
+            ResturantReview returnrev = null;
+           IEnumerable<ResturantReview> Find = db.ResturantReviews.ToList();
+            foreach (var item in Find)
+            {
+                if (item.Review_ID == id)
+                {
+                    returnrev = item;
+                    // tell the db to grab the reviews for that item
+                }
+            }
+            if (returnrev == null)
+            {
+                Console.WriteLine("no resturant");
+            }
+            return returnrev;
+        }
         
     }
     

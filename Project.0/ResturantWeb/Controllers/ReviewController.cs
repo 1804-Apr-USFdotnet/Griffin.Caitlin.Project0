@@ -46,7 +46,7 @@ namespace ResturantWeb.Controllers
         // GET: Review/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(Connector.FindReviewbyId(id));
         }
 
         // POST: Review/Edit/5
@@ -68,7 +68,7 @@ namespace ResturantWeb.Controllers
         // GET: Review/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(Connector.FindReviewbyId(id));
         }
 
         // POST: Review/Delete/5

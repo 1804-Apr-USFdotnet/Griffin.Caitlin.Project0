@@ -8,6 +8,8 @@ namespace Resturant_Library
     public static class Connector
     {        
         static CrudStuff crud = new CrudStuff();
+      
+
         public static void EditResturant(Resturant resturant, int id)
         {
             var edit = LibraryResttoDataRest(resturant);
@@ -53,6 +55,10 @@ namespace Resturant_Library
         {
             return DataResturanttoLibraryResturant(crud.FindRestByID(i));
         }//<--------Method to return the id of a resturant, used for searching
+        public static ResturantReviews FindReviewbyId(int i)//<-------find Review by ID
+        {
+            return DataReviewtoLibraryReview(crud.FindReviewbyId(i));
+        }
         public static ResturantReviews DataReviewtoLibraryReview(ResturantReview revset)
         {
             var revmodel = new ResturantReviews()
