@@ -10,35 +10,44 @@ namespace ResturantWeb.Controllers
     public class ReviewController : Controller
     {
         // GET: Review
-        public ActionResult Index(int id)
-        {
-            return View();
-        }
+        //public ActionResult Index(int id)
+        //{
+        //    return View();
+        //}
 
         // GET: Review/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.ResturantID = id;
             return View(Connector.AllReviews(id));
         }
 
         // GET: Review/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            ViewBag.ResturantID = id;
             return View();
         }
-
         // POST: Review/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(int id, FormCollection create)
         {
             try
             {
-                // TODO: Add insert logic here
+                ResturantReviews add = new ResturantReviews
+                {
+                    Resturant_ID = int.Parse(create["Resturant_ID"]),
+                    Reviewer = create["Reviewer"],
+                    StarRating = int.Parse(create["StarRating"]), 
+                    ReviewComment = create["ReviewComment"]
+                };
 
-                return RedirectToAction("Index");
+                Connector.AddReview(add);
+                return RedirectToAction("Details", new {id});
             }
-            catch
+            catch (Exception A )
             {
+                ViewBag.ResturantID = id;
                 return View();
             }
         }

@@ -30,6 +30,12 @@ namespace DataLibrary
             db.Resturants.Add(resturant);
             db.SaveChanges();
         }
+
+        public void AddReview(ResturantReview review)
+        {
+            db.ResturantReviews.Add(review);
+            db.SaveChanges();
+        }
         public IEnumerable<ResturantReview>ShowReview(int id)
             {
             return db.ResturantReviews.Where(revs => revs.Resturant_ID== id).ToList(); //<---takes the review specific to that id and returns its specific reviews tied to that resturand id

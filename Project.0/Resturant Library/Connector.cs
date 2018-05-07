@@ -9,6 +9,12 @@ namespace Resturant_Library
     {        
         static CrudStuff crud = new CrudStuff();
       
+        public static void AddReview(ResturantReviews review)
+        {
+            var temp = LibraryReviewtoDataReview(review);
+            crud.AddReview(temp);
+        }
+
 
         public static void EditResturant(Resturant resturant, int id)
         {
@@ -58,6 +64,19 @@ namespace Resturant_Library
         public static ResturantReviews FindReviewbyId(int i)//<-------find Review by ID
         {
             return DataReviewtoLibraryReview(crud.FindReviewbyId(i));
+        }
+
+        public static ResturantReview LibraryReviewtoDataReview(ResturantReviews librevtodatrev)
+        {
+            var revdisp = new ResturantReview()
+            {
+                Review_ID = librevtodatrev.Review_ID,
+                Resturant_ID = librevtodatrev.Resturant_ID,
+                Reviewer = librevtodatrev.Reviewer,
+                StarRating = librevtodatrev.StarRating,
+                ReviewComment = librevtodatrev.ReviewComment
+            };
+            return revdisp;
         }
         public static ResturantReviews DataReviewtoLibraryReview(ResturantReview revset)
         {

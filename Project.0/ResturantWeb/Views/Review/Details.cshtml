@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Resturant_Library.ResturantReviews>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new {id = ViewBag.ResturantID})
 </p>
 <table class="table">
     <tr>

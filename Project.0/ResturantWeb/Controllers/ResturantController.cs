@@ -29,7 +29,7 @@ namespace ResturantWeb.Controllers
         [HttpPost] 
         public ActionResult Create(FormCollection infoforCreate)
         {
-            try
+            try //<-----if not model state is not valid, redirect to index server side validation ***********IMPORTANT*******
             {
                 Resturant create = new Resturant
                 {
@@ -49,7 +49,7 @@ namespace ResturantWeb.Controllers
                 return View();
             }           
         }
-        // GET: Resturant/Edit/5
+
         public ActionResult Edit(int id)
         {
             return View(Connector.FindResturantsByID(id));
