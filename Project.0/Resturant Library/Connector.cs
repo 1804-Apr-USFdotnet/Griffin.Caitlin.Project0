@@ -8,10 +8,10 @@ namespace Resturant_Library
     public static class Connector
     {        
         static CrudStuff crud = new CrudStuff();
-        public static void EditResturant(int id, Resturant resturant)
+        public static void EditResturant(Resturant resturant, int id)
         {
             var edit = LibraryResttoDataRest(resturant);
-            crud.editResturant(edit);
+            crud.editResturant(edit, id);
         }
         public static void DeleteResturant(int id)
         {

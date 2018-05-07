@@ -9,13 +9,6 @@ namespace Resturant_Library
     public class Resturant//<---------------Resturant class, concrete class
     {
 
-        private string id;
-        private string name;
-        private string city;
-        private string state;
-        private string street;
-        private string averageRating;
-
 
         [Key]
         public int Id { get; set; }

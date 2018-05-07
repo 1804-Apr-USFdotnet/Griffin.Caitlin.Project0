@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Web.Mvc;
 using Resturant_Library;
 
@@ -61,7 +62,6 @@ namespace ResturantWeb.Controllers
             {
                 Resturant edit = new Resturant
                 {
-                    Id = id,
                     Name = Edit["name"],
                     AverageRating = 0, //<-------------------fix this
                     City = Edit["city"],
@@ -69,11 +69,13 @@ namespace ResturantWeb.Controllers
                     Street = Edit["Street"],
                 };
                 // TODO: Add update logic here
-                Connector.EditResturant(id, edit);
+                var Id = Convert.ToInt32(Edit["id"]);
+                Connector.EditResturant(edit, Id);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception E)
             {
+
                 return View();
             }
         }

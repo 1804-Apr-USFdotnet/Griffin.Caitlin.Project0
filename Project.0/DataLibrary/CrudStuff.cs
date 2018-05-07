@@ -9,9 +9,14 @@ namespace DataLibrary
     public class CrudStuff
     {
         ResturantDbEntities db = new ResturantDbEntities();
-        public void editResturant(Resturant resturant)
+        public void editResturant(Resturant resturant, int id)
         {
-            db.Entry(resturant).State = EntityState.Modified;
+            var rest = FindRestByID(id);
+            rest.Name = resturant.Name;
+            rest.State = resturant.State;
+            rest.Street = resturant.Street;
+            rest.City = resturant.City;
+            rest.AverageRating = resturant.AverageRating;
             db.SaveChanges();            
         }
         public void deleteResturant(int id)
