@@ -2,6 +2,9 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ResturantWeb.Controllers;
+using Resturant_Library;
+using System.Web.Mvc;
 
 namespace WebTests.Tests.Controllers
 {
@@ -59,9 +62,36 @@ namespace WebTests.Tests.Controllers
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void ReviewerCheck()
         {
+            ReviewController Controller = new ReviewController();
 
+            var reviewerCheck = Controller.Edit(1551, 1110) as ViewResult;
+            var actual = reviewerCheck.Model as ResturantReviews;
+
+            Assert.AreEqual("Illidan", actual.Reviewer);
+        }
+
+        [TestMethod]
+        public void ReviewModelIsNull()
+        {
+            ReviewController Controller = new ReviewController();
+
+            var DeleteCheck = Controller.Edit(1, 1) as ViewResult;
+            var actual = DeleteCheck.Model as ResturantReviews;
+
+            Assert.IsNull(actual);
+        }
+
+        [TestMethod]
+        public void ReviewModelIsNotNull()
+        {
+            ReviewController Controller = new ReviewController();
+
+            var DeleteCheck = Controller.Edit(1551, 1110) as ViewResult;
+            var actual = DeleteCheck.Model as ResturantReviews;
+
+            Assert.IsNotNull(actual);
         }
     }
 }
