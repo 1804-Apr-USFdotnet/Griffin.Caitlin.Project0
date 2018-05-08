@@ -24,9 +24,6 @@ namespace Resturant_Library
             var edit = LibraryReviewtoDataReview(review);
             crud.EditReview(edit, id);
         }
-
-
-
         public static void DeleteResturant(int id)
         {
             var temp = LibraryResttoDataRest(FindResturantsByID(id));

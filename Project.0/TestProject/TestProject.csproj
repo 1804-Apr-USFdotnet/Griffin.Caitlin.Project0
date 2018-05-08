@@ -81,6 +81,10 @@
       <Project>{6a739e73-4b7d-4b34-b575-d327d6b46393}</Project>
       <Name>Resturant Library</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ResturantWeb\ResturantWeb.csproj">
+      <Project>{B11D2A3E-FDD4-400D-8FD0-2797A4618682}</Project>
+      <Name>ResturantWeb</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
