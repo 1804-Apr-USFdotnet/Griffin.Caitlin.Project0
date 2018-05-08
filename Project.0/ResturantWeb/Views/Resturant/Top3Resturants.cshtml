@@ -1,15 +1,9 @@
 ﻿@model IEnumerable<Resturant_Library.Resturant>
 
 <p>
-    @Html.ActionLink("Create New", "Create") |
-    @Html.ActionLink("Find Top 3 Resturants", "Top3Resturants") |
-    @Html.ActionLink("Find by Name Ascending", "OrderbyAsc")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -28,13 +22,8 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-
+@foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -50,14 +39,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.AverageRating)
         </td>
-        <td class="table-hover">
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "ResturantDetails", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
-            @Html.ActionLink("Reviews", "Details", "Review", new { id = item.Id },null)
-            
+        <td>
         </td>
     </tr>
-    }
+}
 
 </table>

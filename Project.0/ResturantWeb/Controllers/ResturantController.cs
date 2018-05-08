@@ -1,18 +1,43 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Linq;
 using Resturant_Library;
+using Microsoft.Ajax.Utilities;
 
 namespace ResturantWeb.Controllers
 {
 
     public class ResturantController : Controller
     {
+        Sorter sort = new Sorter();
+        List<Resturant> allResturants = (List<Resturant>)Connector.AllResturants();
         // GET: Resturant
-        public ActionResult Index()
+        [HttpGet] // default type of Action
+        public ActionResult Index(string search)
         {
-            return View(Connector.AllResturants());
+            string query = Request.QueryString["search"];
+            if (query.IsNullOrWhiteSpace())
+            {
+                if (search.IsNullOrWhiteSpace())
+                {
+                    return View(Connector.AllResturants());
+                }
+                return View(sort.FindResturantbyName(Connector.AllResturants().ToList(),search));
+            }
+            return View(sort.FindResturantbyName(Connector.AllResturants().ToList(), query));
         }
+
+        public ActionResult Top3Resturants()
+        {
+            return View(sort.ShowResturantsbyRating(allResturants));
+        }
+        public ActionResult OrderbyAsc()
+        {
+            return View(sort.SortbyNameAsc(allResturants));
+        }
+            
 
         // GET: Resturant/Details/5
         public ActionResult ResturantDetails(int id)
@@ -62,19 +87,16 @@ namespace ResturantWeb.Controllers
                 Resturant edit = new Resturant
                 {
                     Name = Edit["name"],
-                    AverageRating = 0, //<-------------------fix this
                     City = Edit["city"],
                     State = Edit["state"],
                     Street = Edit["Street"],
                 };
-                // TODO: Add update logic here
                 var Id = Convert.ToInt32(Edit["id"]);
                 Connector.EditResturant(edit, Id);
                 return RedirectToAction("Index");
             }
             catch (Exception E)
             {
-
                 return View();
             }
         }
@@ -97,6 +119,6 @@ namespace ResturantWeb.Controllers
             {
                 return View();
             }
-        }
+        }        
     }
 }

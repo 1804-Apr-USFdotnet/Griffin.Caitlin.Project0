@@ -14,7 +14,6 @@ namespace Resturant_Library
         {
             return Connector.ConvertDataListtoLibraryList(tempz);
         }
-
         public ICollection<Resturant>FindResturantbyName(List<Resturant>tempt, string name)
         {
             return (List<Resturant>)tempt.FindAll(x => x.Name.Contains(name));
@@ -22,8 +21,11 @@ namespace Resturant_Library
         public ICollection<Resturant> ShowResturantsbyRating(List<Resturant> temp)
         {
             return temp.OrderByDescending(x => x.AverageRating).Take(3).ToList();
-        }
-
+        }   
         
+        public ICollection<Resturant> SortbyNameAsc(List<Resturant> asc)
+        {
+            return asc.OrderBy(x => x.Name).ToList();
+        }
     }  
 }

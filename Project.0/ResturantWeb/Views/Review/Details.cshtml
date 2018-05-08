@@ -35,7 +35,7 @@
             @Html.DisplayFor(modelItem => item.ReviewComment)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Review_ID }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.Review_ID, rest=item.Resturant_ID}) |
             @Html.ActionLink("Delete", "Delete", new { id= ViewBag.ResturantID, id2 = item.Review_ID})
         </td>
     </tr>

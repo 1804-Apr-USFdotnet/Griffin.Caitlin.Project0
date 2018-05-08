@@ -19,6 +19,15 @@ namespace DataLibrary
             rest.AverageRating = resturant.AverageRating;
             db.SaveChanges();            
         }
+
+        public void EditReview(ResturantReview review, int id)
+        {
+            var rev = FindReviewbyId(id);
+            rev.Reviewer = review.Reviewer;
+            rev.StarRating = review.StarRating;
+            rev.ReviewComment = review.ReviewComment;
+            db.SaveChanges();
+        }
         public void deleteResturant(int id)
         {
             Resturant restdel = FindRestByID(id);
@@ -96,6 +105,13 @@ namespace DataLibrary
                 Console.WriteLine("no resturant");
             }
             return returnrev;
+        }
+
+
+        public ResturantReview FindReviewbyResturantId(int id, int resid)
+        {
+            List<ResturantReview> listorevs = (List<ResturantReview>)ShowReview(id);
+            return (ResturantReview)listorevs.Where(x => x.Resturant_ID == resid).FirstOrDefault();
         }
         
     }

@@ -17,10 +17,11 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../Home/Index">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/Home/Index">Home <span class="sr-only">(current)</span></a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="../Resturant/Index">Resturant</a>
+                    <a class="nav-link" href="/Resturant/Index">Resturant</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -30,10 +31,14 @@
                 </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <div class="col-sm-3 col-md-3 pull-right">
+                <form class="navbar-nav" role="search">
+                    <div class="input-group">
+                        <button class="btn btn-secondary" type="submit">@Html.ActionLink(" ", "Index", "Restaurant")<i class="fa fa-search"></i></button>
+                        <input type="text" class="form-control" placeholder="Search" name="search" id="search">
+                    </div>
+                </form>
+            </div>
         </div>
     </nav>
     <div class="container body-content">
@@ -49,3 +54,5 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+

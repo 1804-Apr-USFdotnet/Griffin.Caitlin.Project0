@@ -8,7 +8,7 @@ using Resturant_Library;
 namespace ResturantWeb.Controllers
 {
     public class ReviewController : Controller
-    {
+    {        
         public ActionResult Details(int id)
         {
             ViewBag.ResturantID = id;
@@ -41,20 +41,29 @@ namespace ResturantWeb.Controllers
                 return View();
             }
         }
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, int rest)
         {
-            return View(Connector.FindReviewbyId(id));
-        }//<---------Do Later
+            ViewBag.id = rest;
+            return View(Connector.FindReviewbyId(rest, id));
+        }
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id,int rest, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                ResturantReviews edit = new ResturantReviews
+                {
+                    Resturant_ID = Convert.ToInt32( collection["Resturant_ID"]),
+                    Reviewer = collection["Reviewer"],
+                    ReviewComment = collection["ReviewComment"],
+                    StarRating=Convert.ToInt32( collection["StarRating"])
+                    
+                };
+                //var StarRating = Convert.ToInt32(collection["StarRating"]);
+                Connector.EditReview(edit, id);
+                return RedirectToAction("Details/"+rest);
             }
-            catch
+            catch(Exception E)
             {
                 return View();
             }
@@ -62,7 +71,7 @@ namespace ResturantWeb.Controllers
         public ActionResult Delete(int id, int id2)
         {
             ViewBag.ResturantID = id;
-            return View(Connector.FindReviewbyId(id2));
+            return View(Connector.FindReviewbyId(id,id2));
         }
         [HttpPost]
         public ActionResult Delete(int id, int id2, FormCollection collection)

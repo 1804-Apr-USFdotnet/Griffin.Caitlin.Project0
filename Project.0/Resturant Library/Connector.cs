@@ -19,6 +19,14 @@ namespace Resturant_Library
             var edit = LibraryResttoDataRest(resturant);
             crud.editResturant(edit, id);
         }
+        public static void EditReview(ResturantReviews review, int id)
+        {
+            var edit = LibraryReviewtoDataReview(review);
+            crud.EditReview(edit, id);
+        }
+
+
+
         public static void DeleteResturant(int id)
         {
             var temp = LibraryResttoDataRest(FindResturantsByID(id));
@@ -26,7 +34,7 @@ namespace Resturant_Library
         }
         public static void DeleteReview(int id)
         {
-            var temp = LibraryReviewtoDataReview(FindReviewbyId(id));
+
             crud.DeleteReview(id);
         }
         public static void AddResturant(Resturant resturant)
@@ -67,15 +75,17 @@ namespace Resturant_Library
         {
             return DataResturanttoLibraryResturant(crud.FindRestByID(i));
         }//<--------Method to return the id of a resturant, used for searching
-        public static ResturantReviews FindReviewbyId(int i)//<-------find Review by ID
+        public static ResturantReviews FindReviewbyId(int resturantid, int reviewsid)//<-------find Review by ID
         {
-            return DataReviewtoLibraryReview(crud.FindReviewbyId(i));
+            List<ResturantReviews> reviews = (List<ResturantReviews>)AllReviews(resturantid);
+            ResturantReviews rev = (ResturantReviews)reviews.Where(x => x.Review_ID == reviewsid).FirstOrDefault();
+            return rev;
         }
         public static ResturantReview LibraryReviewtoDataReview(ResturantReviews librevtodatrev)
         {
             var revdisp = new ResturantReview()
             {
-                Review_ID = librevtodatrev.Review_ID,
+                //Review_ID = librevtodatrev.Review_ID,
                 Resturant_ID = librevtodatrev.Resturant_ID,
                 Reviewer = librevtodatrev.Reviewer,
                 StarRating = librevtodatrev.StarRating,
