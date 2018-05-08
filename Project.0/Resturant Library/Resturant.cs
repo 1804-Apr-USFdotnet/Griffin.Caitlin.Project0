@@ -14,16 +14,16 @@ namespace Resturant_Library
         [Key]
         public int Id { get; set; }
         [Required]
-        [StringLength(10, ErrorMessage = "Review should not exceed 10")]
+        [StringLength(20, ErrorMessage = "Review should not exceed 10")]
         public string Name { get; set; }
         [Required]
-        [StringLength(10, ErrorMessage = "Review should not exceed 10")]
+        [StringLength(20, ErrorMessage = "Review should not exceed 10")]
         public string City { get; set; }
         [Required]
-        [StringLength(10, ErrorMessage = "Review should not exceed 10")]
+        [StringLength(20, ErrorMessage = "Review should not exceed 10")]
         public string State { get; set; }
         [Required]
-        [StringLength(10, ErrorMessage = "Review should not exceed 10")]
+        [StringLength(20, ErrorMessage = "Review should not exceed 10")]
         public string Street { get; set; }
         public double AverageRating {get;set;}
         public List<ResturantReviews> Reviews{ get; set; }
