@@ -14,8 +14,6 @@ namespace Resturant_Library
             var temp = LibraryReviewtoDataReview(review);
             crud.AddReview(temp);
         }
-
-
         public static void EditResturant(Resturant resturant, int id)
         {
             var edit = LibraryResttoDataRest(resturant);
@@ -26,6 +24,11 @@ namespace Resturant_Library
             var temp = LibraryResttoDataRest(FindResturantsByID(id));
             crud.deleteResturant(id);
         }
+        public static void DeleteReview(int id)
+        {
+            var temp = LibraryReviewtoDataReview(FindReviewbyId(id));
+            crud.DeleteReview(id);
+        }
         public static void AddResturant(Resturant resturant)
         {
             var temp = LibraryResttoDataRest(resturant);
@@ -33,6 +36,7 @@ namespace Resturant_Library
         }
         public static Resturant_Library.Resturant DataResturanttoLibraryResturant(DataLibrary.Resturant dataset)
         {
+            var reviews = AllReviews(dataset.id); 
             var libmodel = new Resturant_Library.Resturant() // converting information from the database for the resturant library to understand
             {
                 Name = dataset.Name,
@@ -40,8 +44,10 @@ namespace Resturant_Library
                 AverageRating = dataset.AverageRating,
                 City = dataset.City,
                 State = dataset.State,
-                Street = dataset.Street
+                Street = dataset.Street,
+                Reviews = (List<ResturantReviews>) reviews
             };
+            libmodel.GetAverageRating();
              return libmodel;
         }
         public static ICollection<Resturant> ConvertDataListtoLibraryList(ICollection<DataLibrary.Resturant> Datalist)
@@ -65,7 +71,6 @@ namespace Resturant_Library
         {
             return DataReviewtoLibraryReview(crud.FindReviewbyId(i));
         }
-
         public static ResturantReview LibraryReviewtoDataReview(ResturantReviews librevtodatrev)
         {
             var revdisp = new ResturantReview()

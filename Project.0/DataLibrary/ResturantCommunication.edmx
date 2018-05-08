@@ -82,7 +82,9 @@
           <NavigationProperty Name="ResturantReviews" Relationship="ResturantDbModel.FK_ResturantReviews_Resturants" FromRole="Resturant" ToRole="ResturantReview" />
         </EntityType>
         <Association Name="FK_ResturantReviews_Resturants">
-          <End Type="ResturantDbModel.Resturant" Role="Resturant" Multiplicity="1" />
+          <End Type="ResturantDbModel.Resturant" Role="Resturant" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="ResturantDbModel.ResturantReview" Role="ResturantReview" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Resturant">

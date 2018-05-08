@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace Resturant_Library
 
@@ -16,10 +17,14 @@ namespace Resturant_Library
         public string City { get; set; }
         public string State { get; set; }
         public string Street { get; set; }
-        public double AverageRating { get; set; }
-
-
+        public double AverageRating {get;set;}
         public List<ResturantReviews> Reviews{ get; set; }
+        public void GetAverageRating()
+        {
+            AverageRating = Reviews.Sum(x => x.StarRating) / Reviews.Count;
+            //return result;
+
+        }
 
         //public Resturant() //constructor <--------------Example, i keep it to use as reference
         //{

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Revature\Griffin.Caitlin.Project0\Project.0\DataLibrary\ResturantCommunication.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Revature\Griffin.Caitlin.Project_1\Project.0\DataLibrary\ResturantCommunication.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

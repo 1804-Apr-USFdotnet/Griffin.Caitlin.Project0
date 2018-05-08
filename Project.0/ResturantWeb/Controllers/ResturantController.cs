@@ -35,7 +35,6 @@ namespace ResturantWeb.Controllers
                 {
                     // TODO: Add insert logic here
                     Name = infoforCreate["name"],
-                    AverageRating = 0, //<-------------------fix this
                     City = infoforCreate["city"],
                     State = infoforCreate["state"],
                     Street = infoforCreate["Street"],
@@ -94,7 +93,7 @@ namespace ResturantWeb.Controllers
                 Connector.DeleteResturant(id);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception E)
             {
                 return View();
             }

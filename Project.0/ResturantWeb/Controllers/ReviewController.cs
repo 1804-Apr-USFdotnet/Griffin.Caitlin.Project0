@@ -9,26 +9,16 @@ namespace ResturantWeb.Controllers
 {
     public class ReviewController : Controller
     {
-        // GET: Review
-        //public ActionResult Index(int id)
-        //{
-        //    return View();
-        //}
-
-        // GET: Review/Details/5
         public ActionResult Details(int id)
         {
             ViewBag.ResturantID = id;
             return View(Connector.AllReviews(id));
         }
-
-        // GET: Review/Create
         public ActionResult Create(int id)
         {
             ViewBag.ResturantID = id;
             return View();
         }
-        // POST: Review/Create
         [HttpPost]
         public ActionResult Create(int id, FormCollection create)
         {
@@ -51,14 +41,10 @@ namespace ResturantWeb.Controllers
                 return View();
             }
         }
-
-        // GET: Review/Edit/5
         public ActionResult Edit(int id)
         {
             return View(Connector.FindReviewbyId(id));
-        }
-
-        // POST: Review/Edit/5
+        }//<---------Do Later
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -73,25 +59,23 @@ namespace ResturantWeb.Controllers
                 return View();
             }
         }
-
-        // GET: Review/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, int id2)
         {
-            return View(Connector.FindReviewbyId(id));
+            ViewBag.ResturantID = id;
+            return View(Connector.FindReviewbyId(id2));
         }
-
-        // POST: Review/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, int id2, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                Connector.DeleteReview(id2);
+                return RedirectToAction("Details/"+id);
             }
             catch
             {
+                ViewBag.ResturantID = id;
                 return View();
             }
         }

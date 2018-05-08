@@ -25,12 +25,17 @@ namespace DataLibrary
             db.Resturants.Remove(restdel);
             db.SaveChanges();
         }
+        public void DeleteReview(int id)
+        {
+            ResturantReview revdel = FindReviewbyId(id);
+            db.ResturantReviews.Remove(revdel);
+            db.SaveChanges();
+        }
         public void addResturant(Resturant resturant)
         {
             db.Resturants.Add(resturant);
             db.SaveChanges();
         }
-
         public void AddReview(ResturantReview review)
         {
             db.ResturantReviews.Add(review);
