@@ -19,7 +19,6 @@ namespace DataLibrary
             rest.AverageRating = resturant.AverageRating;
             db.SaveChanges();            
         }
-
         public void EditReview(ResturantReview review, int id)
         {
             var rev = FindReviewbyId(id);
@@ -106,14 +105,10 @@ namespace DataLibrary
             }
             return returnrev;
         }
-
-
         public ResturantReview FindReviewbyResturantId(int id, int resid)
         {
             List<ResturantReview> listorevs = (List<ResturantReview>)ShowReview(id);
             return (ResturantReview)listorevs.Where(x => x.Resturant_ID == resid).FirstOrDefault();
-        }
-        
-    }
-    
+        }      
+    }   
 }

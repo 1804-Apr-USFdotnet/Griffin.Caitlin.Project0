@@ -7,8 +7,7 @@ namespace Resturant_Library
 {
     public static class Connector
     {        
-        static CrudStuff crud = new CrudStuff();
-      
+        static CrudStuff crud = new CrudStuff();      
         public static void AddReview(ResturantReviews review)
         {
             var temp = LibraryReviewtoDataReview(review);

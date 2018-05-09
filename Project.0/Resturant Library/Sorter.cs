@@ -17,6 +17,7 @@ namespace Resturant_Library
         public ICollection<Resturant>FindResturantbyName(List<Resturant>tempt, string name)
         {
             return (List<Resturant>)tempt.FindAll(x => x.Name.Contains(name));
+            //use linq Where and multiple or statements with the =>
         }
         public ICollection<Resturant> ShowResturantsbyRating(List<Resturant> temp)
         {

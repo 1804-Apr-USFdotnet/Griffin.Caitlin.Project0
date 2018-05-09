@@ -65,6 +65,12 @@ namespace ResturantWeb.Controllers
                     Street = infoforCreate["Street"],
                 };
 
+                if(ModelState.IsValid)
+                {
+                    Connector.AddResturant(create);
+                    return RedirectToAction("Index");
+                }
+
                 Connector.AddResturant(create);
                 return RedirectToAction("Index");
             }           
